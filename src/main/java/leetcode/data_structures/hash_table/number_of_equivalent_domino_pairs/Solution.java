@@ -1,4 +1,4 @@
-package leetcode.data_structures.array.default_approach.number_of_equivalent_domino_pairs;
+package leetcode.data_structures.hash_table.number_of_equivalent_domino_pairs;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package leetcode.data_structures.array.default_approach.count_interesting_subarrays;
+package leetcode.data_structures.hash_table.count_interesting_subarrays;
 
 import java.util.*;
 

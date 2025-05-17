@@ -1,4 +1,4 @@
-package leetcode.data_structures.array.default_approach.top_k_frequent_elements;
+package leetcode.data_structures.hash_table.top_k_frequent_elements;
 
 import java.util.*;
 
