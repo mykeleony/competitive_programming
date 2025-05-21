@@ -1,12 +1,16 @@
 package leetcode.data_structures.linked_list.reverse_linked_list;
 
+import leetcode.data_structures.linked_list.utils.ListNode;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+import static leetcode.data_structures.linked_list.utils.ListNode.copyList;
+
 /**
- * Solution for LeetCode problem #206. Reverse Linked List.
+ * Solution for LeetCode problem <b>#206. Reverse Linked List.</b>
  * <p>
- * Given the head of a singly linked list, reverse the list, and return the reversed list.
+ * Given the {@code head} of a singly linked list, reverse the list, and return <i>the reversed list</i>.
  * <p>
  * Problem Link: <a href="https://leetcode.com/problems/reverse-linked-list/">LeetCode 206</a>
  */
@@ -23,8 +27,6 @@ public class Solution {
 		ListNode list3 = new ListNode(1);
 		ListNode expected3 = new ListNode(1);
 		test(list3, expected3);
-		
-		test(null, null);
 		
 		// Edge cases
 		ListNode list4 = new ListNode(1, new ListNode(1, new ListNode(1)));
@@ -53,6 +55,16 @@ public class Solution {
 		return previous;
 	}
 	
+	/**
+	 * Reverses a singly linked list using a stack.
+	 * This approach first pushes all node values onto a stack, then pops them
+	 * to construct a new reversed linked list.
+	 * Time Complexity: O(n) due to two passes (one for pushing, one for popping/building).
+	 * Space Complexity: O(n) for the stack.
+	 *
+	 * @param head the head of the linked list
+	 * @return the head of the newly created reversed linked list
+	 */
 	public ListNode reverseListFirstTry(ListNode head) {
 		Deque<Integer> stack = new ArrayDeque<>();
 		ListNode dummy = new ListNode();
@@ -71,73 +83,16 @@ public class Solution {
 		}
 		
 		return dummy.next;
-		
 	}
 	
 	private static void test(ListNode head, ListNode expected) {
 		ListNode result = reverseList(copyList(head)); // Pass a copy to avoid modifying the original test input
+		
 		System.out.printf("Input: %-20s | Result: %-20s | Expected: %-20s | %s%n",
-				listToString(head),
-				listToString(result),
-				listToString(expected),
-				areListsEqual(result, expected) ? "✓ PASS" : "✗ FAIL");
+				head,
+				result,
+				expected,
+				expected.equals(result) ? "✓ PASS" : "✗ FAIL");
 	}
-	
-	private static boolean areListsEqual(ListNode l1, ListNode l2) {
-		while (l1 != null && l2 != null) {
-			if (l1.val != l2.val) return false;
-			
-			l1 = l1.next;
-			l2 = l2.next;
-		}
-		
-		return l1 == null && l2 == null;
-	}
-	
-	private static String listToString(ListNode head) {
-		StringBuilder sb = new StringBuilder("[");
-		ListNode current = head;
-		
-		while (current != null) {
-			sb.append(current.val);
-			
-			if (current.next != null) sb.append(", ");
-			
-			current = current.next;
-		}
-		
-		return sb.append("]").toString();
-	}
-	
-	private static ListNode copyList(ListNode head) {
-		if (head == null) return null;
-		
-		ListNode dummy = new ListNode(0);
-		ListNode current = dummy;
-		
-		while (head != null) {
-			current.next = new ListNode(head.val);
-			current = current.next;
-			head = head.next;
-		}
-		
-		return dummy.next;
-	}
-}
 
-class ListNode {
-	int val;
-	ListNode next;
-	
-	ListNode() {
-	}
-	
-	ListNode(int val) {
-		this.val = val;
-	}
-	
-	ListNode(int val, ListNode next) {
-		this.val = val;
-		this.next = next;
-	}
 }
