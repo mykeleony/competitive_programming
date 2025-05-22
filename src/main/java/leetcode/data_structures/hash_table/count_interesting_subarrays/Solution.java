@@ -16,16 +16,16 @@ import java.util.*;
  */
 public class Solution {
     public static void main(String[] args) {
-        testCase(List.of(3, 2, 4), 2, 1, 3);
-        testCase(List.of(3, 1, 9, 6), 3, 0, 2);
-        testCase(List.of(5,5,5,5), 1, 0, 10);
-        testCase(List.of(1), 1, 0, 1);
+        test(List.of(3, 2, 4), 2, 1, 3);
+        test(List.of(3, 1, 9, 6), 3, 0, 2);
+        test(List.of(5,5,5,5), 1, 0, 10);
+        test(List.of(1), 1, 0, 1);
 
         // Edge cases
-        testCase(null, 0, 1, 0);
-        testCase(new ArrayList<>(), 0, 1, 0);
-        testCase(List.of(1), 0, 0, 0);
-        testCase(List.of(1), 3, 4, 0);
+        test(null, 0, 1, 0);
+        test(new ArrayList<>(), 0, 1, 0);
+        test(List.of(1), 0, 0, 0);
+        test(List.of(1), 3, 4, 0);
     }
 
     public static long countInterestingSubarrays(List<Integer> nums, int modulo, int k) {
@@ -55,7 +55,7 @@ public class Solution {
         return result;
     }
 
-    private static void testCase(List<Integer> nums, int modulo, int k, long expected) {
+    private static void test(List<Integer> nums, int modulo, int k, long expected) {
         long result = countInterestingSubarrays(nums, modulo, k);
         String status = result == expected ? "✓ PASS" : "✗ FAIL";
 
